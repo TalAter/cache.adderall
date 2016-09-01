@@ -14,7 +14,21 @@ var addAll = function(cache, staticAssets = [], versionAssets = []) {
   // @TODO: Verify cache is a cache
   // @TODO: Verify staticAssets is an array
   // @TODO: Verify versionAssets is an array
-  return cache.addAll(staticAssets.concat(versionAssets));
+  var newStaticAssets = [];
+  return Promise.all(
+    staticAssets.map(function(url) {
+      return caches.match(url).then(function(response) {
+        if (response) {
+          return cache.put(url, response);
+        } else {
+          newStaticAssets.push(url);
+          return Promise.resolve();
+        }
+      });
+    })
+  ).then(function() {
+    return cache.addAll(newStaticAssets.concat(versionAssets));
+  });
 };
 
 module.exports = {
