@@ -9,3 +9,14 @@
  */
 
 "use strict";
+
+var addAll = function(cache, staticAssets = [], versionAssets = []) {
+  // @TODO: Verify cache is a cache
+  // @TODO: Verify staticAssets is an array
+  // @TODO: Verify versionAssets is an array
+  return cache.addAll(staticAssets.concat(versionAssets));
+};
+
+module.exports = {
+  addAll:     addAll
+};
