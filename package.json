@@ -1,7 +1,7 @@
 {
   "name": "cache.adderall",
   "version": "0.1.0",
-  "description": "A more impatient version of cache.addAll()",
+  "description": "An impatient version of cache.addAll()",
   "homepage": "https://github.com/TalAter/cache.adderall#readme",
   "main": "dist/cache.adderall.js",
   "scripts": {

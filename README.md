@@ -1,2 +1,2 @@
 # cache.adderall
-:godmode: A more impatient version of cache.addAll()
+:godmode: An impatient version of cache.addAll()
