@@ -1,0 +1,21 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1">
+  <title>cache.adderall()</title>
+</head>
+<body>
+<script>
+  // Register service worker
+  if('serviceWorker' in navigator){
+    // Register service worker
+    navigator.serviceWorker.register('/demo/sw.js').then(function(registration){
+      console.log("Service worker registration succeeded. Scope is", registration.scope);
+    }).catch(function(err){
+      console.log("Service worker registration failed with error", err);
+    });
+  }
+</script>
+</body>
+</html>
