@@ -1,0 +1,27 @@
+{
+  "name": "cache.adderall",
+  "version": "0.1.0",
+  "description": "A more impatient version of cache.addAll()",
+  "homepage": "https://github.com/TalAter/cache.adderall#readme",
+  "main": "dist/cache.adderall.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TalAter/cache.adderall.git"
+  },
+  "keywords": [
+    "CacheStorage",
+    "cache",
+    "storage",
+    "caching",
+    "service workers",
+    "serviceworker"
+  ],
+  "author": "Tal Ater <tal@talater.com> (https://www.talater.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TalAter/cache.adderall/issues"
+  }
+}
