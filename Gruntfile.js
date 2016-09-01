@@ -40,10 +40,10 @@ module.exports = function(grunt) {
       devel: {
         options: {
           protocol: 'http',
-          port: 8443,
+          port: 1919,
           hostname: '*',
           base: '.',
-          open: 'http://localhost:8443/demo'
+          open: 'http://localhost:1919/demo'
         }
       }
     }
