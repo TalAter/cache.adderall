@@ -5,6 +5,7 @@
   "homepage": "https://github.com/TalAter/cache.adderall#readme",
   "main": "dist/cache.adderall.js",
   "scripts": {
+    "start": "grunt serve",
     "test": "grunt test"
   },
   "repository": {
