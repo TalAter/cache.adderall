@@ -10,13 +10,13 @@
 
 "use strict";
 
-var addAll = function(cache, staticAssets = [], versionAssets = []) {
+var addAll = function(cache, immutableRequests = [], mutableRequests = []) {
   // @TODO: Verify cache is a cache
-  // @TODO: Verify staticAssets is an array
-  // @TODO: Verify versionAssets is an array
+  // @TODO: Verify immutableRequests is an array
+  // @TODO: Verify mutableRequests is an array
   var newStaticAssets = [];
   return Promise.all(
-    staticAssets.map(function(url) {
+    immutableRequests.map(function(url) {
       return caches.match(url).then(function(response) {
         if (response) {
           return cache.put(url, response);
@@ -27,7 +27,7 @@ var addAll = function(cache, staticAssets = [], versionAssets = []) {
       });
     })
   ).then(function() {
-    return cache.addAll(newStaticAssets.concat(versionAssets));
+    return cache.addAll(newStaticAssets.concat(mutableRequests));
   });
 };
 
