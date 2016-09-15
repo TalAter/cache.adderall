@@ -27,6 +27,7 @@
   "esversion" : 6,
   "globals":  {
     "self":                   false,
-    "caches":                 false
+    "caches":                 false,
+    "Cache":                  false
   }
 }

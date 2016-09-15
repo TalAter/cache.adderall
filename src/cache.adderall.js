@@ -48,9 +48,11 @@
  * @method addAll
  */
 var addAll = function(cache, immutableRequests = [], mutableRequests = []) {
-  // @TODO: Verify cache is a cache
-  // @TODO: Verify immutableRequests is an array
-  // @TODO: Verify mutableRequests is an array
+  // Verify arguments
+  if (!(cache instanceof Cache) || !Array.isArray(immutableRequests) || !Array.isArray(mutableRequests)) {
+    return Promise.reject();
+  }
+
   var newImmutableRequests = [];
   return Promise.all(
     immutableRequests.map(function(url) {
