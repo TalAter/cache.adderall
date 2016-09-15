@@ -32,6 +32,13 @@ module.exports = function(grunt) {
         }
       }
     },
+    markdox: {
+      target: {
+        files: [
+          {src: 'src/cache.adderall.js', dest: 'docs/README.md'}
+        ]
+      }
+    },
     watch: {
       files: ['src/cache.adderall.js', '!**/node_modules/**'],
       tasks: ['default']
@@ -54,9 +61,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-markdox');
 
   // Register tasks.
-  grunt.registerTask('default', ['jshint', 'browserify']);
+  grunt.registerTask('default', ['jshint', 'browserify', 'markdox']);
   grunt.registerTask('test', ['jshint']);
   grunt.registerTask('serve', ['default', 'connect:devel', 'watch']);
 
