@@ -32,5 +32,5 @@ var addAll = function(cache, immutableRequests = [], mutableRequests = []) {
 };
 
 module.exports = {
-  addAll:     addAll
+  addAll
 };
