@@ -54,6 +54,8 @@ var addAll = function(cache, immutableRequests = [], mutableRequests = []) {
   }
 
   var newImmutableRequests = [];
+
+  // Go over immutable requests
   return Promise.all(
     immutableRequests.map(function(url) {
       return caches.match(url).then(function(response) {
@@ -65,6 +67,7 @@ var addAll = function(cache, immutableRequests = [], mutableRequests = []) {
         }
       });
     })
+  // go over mutable requests, and immutable requests not found in any cache
   ).then(function() {
     return cache.addAll(newImmutableRequests.concat(mutableRequests));
   });
