@@ -1,0 +1,87 @@
+body {
+  font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;;
+  background-color: #fff;
+  padding-bottom: 100px;
+}
+@media (max-width: 1050px) {
+  body {
+    background-position: -200px -700px;
+  }
+}
+@media (max-width: 600px) {
+  body {
+    background-position: -100px -600px;
+  }
+  video {
+    max-width: 95%!important;
+  }
+}
+
+strong {
+  font-weight: 900;
+}
+
+header {
+  color: #fff;
+  text-align: center;
+  padding-top: 50px;
+  background: #353c4b;
+  background: -moz-radial-gradient(center, ellipse cover, #353c4b 0%, #1b212f 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, #353c4b 0%,#1b212f 100%);
+  background: radial-gradient(ellipse at center, #353c4b 0%,#1b212f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353c4b', endColorstr='#1b212f',GradientType=1 );
+  background-position: -300px -800px;
+  background-size: 120% 100%;
+  border-bottom: 16px solid #00baf8;
+}
+header div {
+  background: url("../img/bg_texturing.png") repeat;
+}
+header h1, header h2, header h3 {
+  font-weight: 300;
+  font-size: 48px;
+}
+header h2 {
+  font-size: 20.5px;
+  margin-top: 15px;
+}
+header h3 {
+  font-size: 25px;
+  margin-top: 130px;
+  margin-bottom: 480px;
+  line-height: 1.3em;
+  max-width: 590px;
+}
+header h3 strong {
+  font-weight: 700;
+}
+
+div.show-and-tell {
+  margin: -430px auto 65px;
+}
+video {
+  width: 786px;
+  height: 510px;
+  -webkit-box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.4);
+  box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.4);
+}
+
+div.container {
+  margin-top: 100px;
+}
+div.narrower {
+  max-width: 850px;
+}
+p {
+  font-size: 16px;
+}
+p em {
+  font-weight: 700;
+  font-size: 23px;
+  font-style: normal;
+}
+
+#text-comparison div p:first-child {
+  height: 100px;
+}

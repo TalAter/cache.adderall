@@ -1,14 +1,13 @@
-importScripts('/dist/cache.adderall.js');
+importScripts('js/cache.adderall.js');
 
 var STATIC_FILES_TO_CACHE = [
-  '/demo/assets/fullpage-background.mp4',
-  '/demo/assets/logo.a3ffd16.png',
-  '/demo/assets/style_v34.css'
+  'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
 ];
 
 var FILES_TO_CACHE = [
-  '/demo/assets/weather.js',
-  '/demo/assets/index.html'
+  'styles/main.css',
+  'video/cache.adderall.demo.mp4',
+  'index.html'
 ];
 
 self.addEventListener('install', function(event) {
