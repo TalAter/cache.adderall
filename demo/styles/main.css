@@ -107,3 +107,7 @@ p em {
     margin-bottom: 50px;
   }
 }
+
+div.row h3 {
+  margin-top: 40px;
+}

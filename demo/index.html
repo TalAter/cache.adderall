@@ -39,6 +39,64 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+        <h3>What does adderall do?</h3>
+        <p><code>cache.adderall()</code> is very much like the browser's native <code>cache.addAll()</code>.</p>
+        <p>The only difference is that when you call it, adderall first looks for the files you are trying to cache in the user's existing caches. If any of these files are found, they will be copied over to the new cache, so that your service worker only needs to download new files. Any file that isn't found will be fetched as usual using the native <code>cache.addAll()</code>.</p>
+        <p>This saves bandwidth, speeds up your service worker installation, and saves your users from downloading the same files over and over again, every time your service worker's version changes.</p>
+        <h3>Using cache.adderall()</h3>
+        <p>Once you've imported adderall into your service worker, <code>cache.adderall()</code> works very much like <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object as the first argument, and the array of URLs as the second argument.</p>
+        <pre><code class="javascript">// In your service worker
+importScripts('js/cache.adderall.js');
+
+var STATIC_FILES_TO_CACHE = [
+  'video/cache.adderall.demo.mp4',
+  'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+  'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js'
+];
+
+self.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open('cache-v1').then(function(cache) {
+      return adderall.addAll(cache, STATIC_FILES_TO_CACHE);
+    })
+  );
+});</code></pre>
+        <p>When the service worker above first runs in your user's service worker, it will behave exactly like <code>cache.addAll()</code>. But let's say you decided to add a 4th file to the <code>STATIC_FILES_TO_CACHE</code> array, this is where adderall shines. Where <code>cache.addAll()</code> would download every file again, <code>adderall.addAll()</code> will only download the new file, and copy the existing files from the old cache to the new (or skip them, if both versions use the same cache).</p>
+        <h3>Wait a second...!</h3>
+        <p>adderall is great for files that never change (e.g. <code>style.v38.css</code>, or<code>/js/9.7.0/highlight.min.js</code>). But if the files you are serving may change between versions, while their URL stays the same (e.g. <code>app-settings.json</code>, <code>index.html</code>), you may find yourself wanting to skip adderall's lazy behavior.</p>
+        <p>Any file that needs to be fetched from the network every time you update your service worker can be passed to in an array of urls as adderall's third argument.</p>
+        <pre><code class="javascript">// In your service worker
+importScripts('js/cache.adderall.js');
+
+var STATIC_FILES_TO_CACHE = [
+'video/cache.adderall.demo.mp4',
+'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js'
+];
+
+var FILES_TO_CACHE = [
+  'app-settings.json',
+  'index.html'
+];
+
+self.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open('cache-v2').then(function(cache) {
+      return adderall.addAll(cache, STATIC_FILES_TO_CACHE, FILES_TO_CACHE);
+    })
+  );
+});</code></pre>
+        <p>Any URLs passed in the 3rd argument, are handled directly by the native <code>cache.addAll()</code>. In fact, the following two commands do exactly the same thing.</p>
+        <pre><code class="javascript">cache.addAll(['/index.html', '/main.css']);
+adderall.addAll(cache, undefined, ['/index.html', '/main.css']);
+</code></pre>
+        <p>Remember: <code>adderall.addAll(cache, immutableURLs, mutableURLs);</code></p>
+      </div>
+    </div>
+  </div>
 <script>
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('sw.js');
@@ -46,5 +104,8 @@
 </script>
 <!-- Unrelated sugar to make the page look nice -->
 <script src="js/main.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atelier-heath-light.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
