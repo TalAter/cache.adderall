@@ -84,7 +84,7 @@ video {
 }
 
 div.container {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 div.narrower {
   max-width: 850px;
@@ -97,7 +97,6 @@ p em {
   font-size: 23px;
   font-style: normal;
 }
-
 @media (min-width: 770px) {
   #text-comparison div p:first-child {
     height: 100px;
