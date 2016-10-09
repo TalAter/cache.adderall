@@ -43,50 +43,50 @@
     <div class="row">
       <div class="col-md-12">
         <h3>What does adderall do?</h3>
-        <p><code>cache.adderall()</code> is very much like the browser's native <code>cache.addAll()</code>.</p>
-        <p>The only difference is that when you call it, adderall first looks for the files you are trying to cache in the user's existing caches. If any of these files are found, they will be copied over to the new cache, so that your service worker only needs to download new files. Any file that isn't found will be fetched as usual using the native <code>cache.addAll()</code>.</p>
-        <p>This saves bandwidth, speeds up your service worker installation, and saves your users from downloading the same files over and over again, every time your service worker's version changes.</p>
+        <p>When we install a new service worker, it is a common practice to use <code>cache.addAll()</code> to cache all the URLs our web app needs. Then, when we make any change to the service worker, or change the list of files it needs to cache, the install event runs again, and all the same files are fetched from the network and cached again. This can be terribly inefficient and wasteful.</p>
+        <p><code>cache.adderall()</code> is very much like the browser's native <code>cache.addAll()</code>. The only difference is that when you call it, adderall first looks for the files you are trying to cache in the user's existing caches. If any of these files are found, they will be copied over to the new cache, so that your service worker only needs to download new files. Any file that isn't found will be fetched as usual using the native <code>cache.addAll()</code>.</p>
+        <p>This saves bandwidth, speeds up your service worker installation, and saves your users from downloading the same files over and over again, every time your service worker changes.</p>
         <h3>Using cache.adderall()</h3>
-        <p>Once you've imported adderall into your service worker, <code>cache.adderall()</code> works very much like <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object as the first argument, and the array of URLs as the second argument.</p>
+        <p>Once you've imported adderall into your service worker, calling <code>cache.adderall()</code> is very much like calling <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object followed by the array of URLs.</p>
         <pre><code class="javascript">// In your service worker
 importScripts('js/cache.adderall.js');
 
-var STATIC_FILES_TO_CACHE = [
+var STATIC_FILES = [
   'video/cache.adderall.demo.mp4',
-  'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
-  'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js'
+  '/bootstrap/3.3.7/css/bootstrap.min.css',
+  '/js/2.6.0/annyang.min.js'
 ];
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('cache-v1').then(function(cache) {
-      return adderall.addAll(cache, STATIC_FILES_TO_CACHE);
-    })
+    caches.open('cache-v1').then(cache =>
+      adderall.addAll(cache, STATIC_FILES)
+    )
   );
 });</code></pre>
-        <p>When the service worker above first runs in your user's service worker, it will behave exactly like <code>cache.addAll()</code>. But let's say you decided to add a 4th file to the <code>STATIC_FILES_TO_CACHE</code> array, this is where adderall shines. Where <code>cache.addAll()</code> would download every file again, <code>adderall.addAll()</code> will only download the new file, and copy the existing files from the old cache to the new (or skip them, if both versions use the same cache).</p>
-        <h3>Wait a second...!</h3>
-        <p>adderall is great for files that never change (e.g. <code>style.v38.css</code>, or<code>/js/9.7.0/highlight.min.js</code>). But if the files you are serving may change between versions, while their URL stays the same (e.g. <code>app-settings.json</code>, <code>index.html</code>), you may find yourself wanting to skip adderall's lazy behavior.</p>
-        <p>Any file that needs to be fetched from the network every time you update your service worker can be passed to in an array of urls as adderall's third argument.</p>
+        <p>When the service worker above first runs in your user's service worker, it will behave exactly like <code>cache.addAll()</code>. But let's say you decided to add a 4th file to the <code>STATIC_FILES</code> array, this is where adderall shines. Where <code>cache.addAll()</code> would download every file again, <code>adderall.addAll()</code> will only download the new file, and copy the existing files from the old cache to the new (or skip them, if both versions use the same cache).</p>
+        <h3>Wait a second… what if my files changed?</h3>
+        <p>adderall is great for files that never change (e.g. <code>style.v38.css</code>, or<code>/js/2.6.0/annyang.min.js</code>). But if some of your files may change between versions, while their URL stays the same (e.g. <code>index.html</code>, <code>app-settings.json</code>), you can ask adderall to skip its lazy behavior.</p>
+        <p>Any file that needs to be fetched from the network every time you update your service worker can be passed in an array of urls as adderall's third argument.</p>
         <pre><code class="javascript">// In your service worker
 importScripts('js/cache.adderall.js');
 
-var STATIC_FILES_TO_CACHE = [
-'video/cache.adderall.demo.mp4',
-'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
-'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js'
+var STATIC_FILES = [
+  'video/cache.adderall.demo.mp4',
+  '/bootstrap/3.3.7/css/bootstrap.min.css',
+  '/js/2.6.0/annyang.min.js'
 ];
 
-var FILES_TO_CACHE = [
+var MUTABLE_FILES = [
   'app-settings.json',
   'index.html'
 ];
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('cache-v2').then(function(cache) {
-      return adderall.addAll(cache, STATIC_FILES_TO_CACHE, FILES_TO_CACHE);
-    })
+    caches.open('cache-v2').then(cache =>
+      adderall.addAll(cache, STATIC_FILES, MUTABLE_FILES)
+    )
   );
 });</code></pre>
         <p>Any URLs passed in the 3rd argument, are handled directly by the native <code>cache.addAll()</code>. In fact, the following two commands do exactly the same thing.</p>
@@ -94,6 +94,10 @@ self.addEventListener('install', function(event) {
 adderall.addAll(cache, undefined, ['/index.html', '/main.css']);
 </code></pre>
         <p>Remember: <code>adderall.addAll(cache, immutableURLs, mutableURLs);</code></p>
+        <h3>What about HTTP caching?</h3>
+        <p>If your server is configured to serve each different file with the correct caching headers, serving mutable content with a <code>Cache-Control: no-cache</code> header, and immutable content with <code>Cache-Control: max-age=31536000</code>, then you might not need adderall. You can read more details on <a href="https://jakearchibald.com/2016/caching-best-practices/">caching header best practices</a> in Jake Archibald's excellent post.</p>
+        <p>If however, you are in an environment where you can't control the caching headers of individual files, can't access the server, are not speaking with Dev Ops over a relatively minor hunting accident, or just using GitHub Pages - give adderall a try.</p>
+        <p>Thanks <a href="https://twitter.com/jaffathecake">Jake Archibald</a> and <a href="https://twitter.com/jeffposnick">Jeffrey Posnick</a> for helping sort this out.</p>
       </div>
     </div>
   </div>
