@@ -52,6 +52,22 @@ header h3 {
   line-height: 1.3em;
   max-width: 590px;
 }
+@media (max-width: 800px) {
+  header h3 {
+    margin-bottom: 280px;
+  }
+  div.show-and-tell {
+    margin-top: -230px!important;
+  }
+}
+@media (max-width: 450px) {
+  header h3 {
+    margin-bottom: 180px;
+  }
+  div.show-and-tell {
+    margin-top: -130px!important;
+  }
+}
 header h3 strong {
   font-weight: 700;
 }
@@ -82,6 +98,13 @@ p em {
   font-style: normal;
 }
 
-#text-comparison div p:first-child {
-  height: 100px;
+@media (min-width: 770px) {
+  #text-comparison div p:first-child {
+    height: 100px;
+  }
+}
+@media (max-width: 770px) {
+  #text-comparison div:first-child {
+    margin-bottom: 50px;
+  }
 }
