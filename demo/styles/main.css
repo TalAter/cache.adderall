@@ -96,7 +96,6 @@ p {
   font-weight: 700;
   font-size: 16px;
   font-style: normal;
-  padding: 0;
 }
 @media (min-width: 770px) {
   #text-comparison div p:first-child {
@@ -116,4 +115,5 @@ div.row h3 {
 code {
   color: inherit;
   background: none;
+  padding: 0;
 }
