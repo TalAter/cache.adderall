@@ -48,7 +48,8 @@
         <p>This saves bandwidth, speeds up your service worker installation, and saves your users from downloading the same files over and over again, every time your service worker changes.</p>
         <h3>Using <code>cache.adderall()</code></h3>
         <p>Once you've imported <code>cache.adderall()</code> into your service worker, calling <code>cache.adderall()</code> is very much like calling <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object followed by the array of URLs.</p>
-<pre><code class="javascript">// In your service worker
+        <div id="code-basic">
+<pre id="code-basic-adderall"><code class="javascript">// In your service worker
 importScripts('js/cache.adderall.js');
 
 var STATIC_FILES = [
@@ -64,6 +65,23 @@ self.addEventListener('install', event => {
     )
   );
 });</code></pre>
+<pre id="code-basic-addall"><code class="javascript">// In your service worker
+
+
+var STATIC_FILES = [
+  'video/cache.adderall.demo.mp4',
+  '/bootstrap/3.3.7/css/bootstrap.min.css',
+  '/js/2.6.0/annyang.min.js'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open('cache-v1').then(cache =>
+      cache.addAll(STATIC_FILES)
+    )
+  );
+});</code></pre>
+        </div>
         <p>When the service worker above first runs in your user's service worker, it will behave exactly like <code>cache.addAll()</code>. But let's say you then decide to add a 4th file to the <code>STATIC_FILES</code> array, this is where <code>cache.adderall()</code> shines. Where <code>cache.addAll()</code> would download every file again, <code>adderall.addAll()</code> only downloads the new file, and copies existing files from the old cache to the new (or just leaves them where they are, if both versions use the same cache).</p>
         <h3>Wait a second… what if my files changed?</h3>
         <p><code>cache.adderall()</code>'s lazy approach is great for files that never change (e.g. <code>style.v38.css</code>, or<code>/js/2.6.0/annyang.min.js</code>). But if some of your files may change between versions, while their URL stays the same (e.g. <code>index.html</code>, <code>app-settings.json</code>), you can ask <code>cache.adderall()</code> to skip its lazy behavior for those files.</p>

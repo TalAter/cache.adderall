@@ -117,3 +117,26 @@ code {
   background: none;
   padding: 0;
 }
+
+#code-basic {
+  position: relative;
+}
+#code-basic-addall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: pulsate 9s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  animation: pulsate 9s ease-out;
+  animation-iteration-count: infinite;
+  opacity: 0.0
+}
+@-webkit-keyframes pulsate {
+    0% {opacity: 1.0;}
+    25% {opacity: 1.0;}
+    30% {opacity: 0.0;}
+    95% {opacity: 0.0;}
+    100% {opacity: 1.0;}
+}
