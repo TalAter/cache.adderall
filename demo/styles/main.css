@@ -92,10 +92,11 @@ div.narrower {
 p {
   font-size: 16px;
 }
-p em {
+#text-comparison code {
   font-weight: 700;
-  font-size: 23px;
+  font-size: 16px;
   font-style: normal;
+  padding: 0;
 }
 @media (min-width: 770px) {
   #text-comparison div p:first-child {
@@ -110,4 +111,9 @@ p em {
 
 div.row h3 {
   margin-top: 40px;
+}
+
+code {
+  color: inherit;
+  background: none;
 }
