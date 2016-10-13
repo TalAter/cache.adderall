@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1">
-  <title>cache.adderall() - the impatient version of cache.addAll()</title>
+  <title>cache.adderall() ⚡ the impatient version of cache.addAll()</title>
   <meta name="description" content="Speed up caching in your Service Workers with a drop-in replacement for cache.addAll()" />
-  <meta property="og:image" content="https://www.talater.com/cache.adderall/img/adderall-screenshot.jpg"/>
+  <meta property="og:image" content="https://www.talater.com/adderall/img/adderall-screenshot.png"/>
   <meta property="og:title" content="cache.adderall() - the impatient version of cache.addAll()"/>
   <meta property="og:description" content="Speed up caching in your Service Workers with a drop-in replacement for cache.addAll()"/>
-  <meta property="og:url" content="https://www.talater.com/cache.adderall/"/>
+  <meta property="og:url" content="https://www.talater.com/adderall/"/>
   <meta property="og:site_name" content="cache.adderall()"/>
   <meta property="fb:admins" content="568390229" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -118,6 +118,31 @@ adderall.addAll(cache, undefined, ['/index.html', '/main.css']);
         <p>If your server is configured to serve each different file with the correct caching headers, serving mutable content with a <code>Cache-Control: no-cache</code> header, and immutable content with <code>Cache-Control: max-age=31536000</code>, then you might not need <code>cache.adderall()</code> at all. In fact, this is the prefered approach. You can read more details on <a href="https://jakearchibald.com/2016/caching-best-practices/">caching header best practices</a> in Jake Archibald's excellent post.</p>
         <p>If however, you are in an environment where you can't control the caching headers of individual files, can't access the server, are not speaking with Dev Ops over a relatively minor hunting accident, or you are just using GitHub Pages - give <code>cache.adderall()</code> a try.</p>
         <p>Thanks <a href="https://twitter.com/jaffathecake">Jake Archibald</a> and <a href="https://twitter.com/jeffposnick">Jeffrey Posnick</a> for helping sort this out.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center narrower">
+    <p>cache.adderall() is a <strong>free</strong>, <strong>open source</strong>, community effort.</p>
+    <p>Please help spread the word:</p>
+    <div class="row home-icons-row">
+      <div class="col-sm-4 text-center">
+        <iframe src="https://ghbtns.com/github-btn.html?user=TalAter&repo=cache.adderall&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+      </div>
+      <div class="col-sm-4 text-center">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://CacheAdderall.com" data-text="cache.adderall() ⚡ Speed up your #PWA with the impatient version of cache.addAll()" data-size="large" data-counturl="https://www.talater.com/adderall/">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+      <div class="col-sm-4 text-center">
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-like" data-href="http://CacheAdderall.com" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
       </div>
     </div>
   </div>
