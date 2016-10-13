@@ -135,8 +135,8 @@ code {
 }
 @-webkit-keyframes pulsate {
     0% {opacity: 1.0;}
-    25% {opacity: 1.0;}
-    30% {opacity: 0.0;}
+    30% {opacity: 1.0;}
+    35% {opacity: 0.0;}
     95% {opacity: 0.0;}
     100% {opacity: 1.0;}
 }
