@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1">
-  <title>cache.adderall() ⚡ the impatient version of cache.addAll()</title>
+  <title>cache.adderall(⚡) - the impatient version of cache.addAll()</title>
   <meta name="description" content="Speed up caching in your Service Workers with a drop-in replacement for cache.addAll()" />
   <meta property="og:image" content="https://www.talater.com/adderall/img/adderall-screenshot.png"/>
-  <meta property="og:title" content="cache.adderall() - the impatient version of cache.addAll()"/>
+  <meta property="og:title" content="cache.adderall(⚡) - the impatient version of cache.addAll()"/>
   <meta property="og:description" content="Speed up caching in your Service Workers with a drop-in replacement for cache.addAll()"/>
   <meta property="og:url" content="https://www.talater.com/adderall/"/>
-  <meta property="og:site_name" content="cache.adderall()"/>
+  <meta property="og:site_name" content="cache.adderall(⚡)"/>
   <meta property="fb:admins" content="568390229" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="styles/main.css">
@@ -19,7 +19,7 @@
 <body>
   <header class="container-fluid">
     <div class="container-fluid">
-      <h1 class="center-block">cache.<strong>adderall</strong>()</h1>
+      <h1 class="center-block">cache.<strong>adderall</strong>(⚡)</h1>
       <h2 class="center-block">the impatient version of cache.addAll()</h2>
       <h3 class="center-block">Speed up your <strong>Service Workers</strong> and save bandwidth with a drop-in replacement for cache.addAll()</h3>
     </div>
@@ -34,7 +34,7 @@
         <p>It returns a promise that only resolves if all the URLs were added to the cache successfully.</p>
       </div>
       <div class="col-sm-5">
-        <p><code>cache.adderall()</code> receives a list of URLs, <strong>then the lazy bastard looks for them in existing caches, only fetching them from the network if it has to.</strong></p>
+        <p><code>cache.adderall(</code>⚡<code>)</code> receives a list of URLs, <strong>then the lazy bastard looks for them in existing caches, only fetching them from the network if it has to.</strong></p>
         <p>It returns a promise that only resolves if all the URLs were added to the cache successfully.</p>
       </div>
     </div>
@@ -43,12 +43,12 @@
   <div class="container narrower">
     <div class="row">
       <div class="col-md-12">
-        <h3>What does <code>cache.adderall()</code> do?</h3>
+        <h3>What does <code>cache.adderall(</code>⚡<code>)</code> do?</h3>
         <p>When we install a new service worker, it is common practice to use <code>cache.addAll()</code> to cache all the URLs our web app needs. Then, when we make any change to the service worker, or change the list of files it needs to cache, the install event runs again and fetches every single file again… This can be terribly inefficient and wasteful.</p>
-        <p><code>cache.adderall()</code> is very much like the browser's native <code>cache.addAll()</code>. The only difference is that when you call it, <code>cache.adderall()</code> first looks for the files you are trying to cache in the user's existing caches. If any of these files are found, they will be copied over to the new cache, so that your service worker only needs to download new files. Any file that isn't already cached will be fetched as usual using the native <code>cache.addAll()</code>.</p>
+        <p><code>cache.adderall(</code>⚡<code>)</code> is very much like the browser's native <code>cache.addAll()</code>. The only difference is that when you call it, <code>cache.adderall(</code>⚡<code>)</code> first looks for the files you are trying to cache in the user's existing caches. If any of these files are found, they will be copied over to the new cache, so that your service worker only needs to download new files. Any file that isn't already cached will be fetched as usual using the native <code>cache.addAll()</code>.</p>
         <p>This saves bandwidth, speeds up your service worker installation, and saves your users from downloading the same files over and over again, every time your service worker changes.</p>
-        <h3>Using <code>cache.adderall()</code></h3>
-        <p>Once you've imported <code>cache.adderall()</code> into your service worker, calling <code>cache.adderall()</code> is very much like calling <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object followed by the array of URLs.</p>
+        <h3>Using <code>cache.adderall(</code>⚡<code>)</code></h3>
+        <p>Once you've <a href="https://github.com/TalAter/cache.adderall/tree/master/dist">imported <code>cache.adderall(</code>⚡<code>)</code></a> into your service worker, calling <code>cache.adderall(</code>⚡<code>)</code> is very much like calling <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object followed by the array of URLs.</p>
         <div id="code-basic">
 <pre id="code-basic-adderall"><code class="javascript">// In your service worker
 importScripts('js/cache.adderall.js');
@@ -83,10 +83,10 @@ self.addEventListener('install', event => {
   );
 });</code></pre>
         </div>
-        <p>When the service worker above first runs in your user's service worker, it will behave exactly like <code>cache.addAll()</code>. But let's say you then decide to add a 4th file to the <code>STATIC_FILES</code> array, this is where <code>cache.adderall()</code> shines. Where <code>cache.addAll()</code> would download every file again, <code>adderall.addAll()</code> only downloads the new file, and copies existing files from the old cache to the new (or just leaves them where they are, if both versions use the same cache).</p>
+        <p>When the service worker above first runs in your user's service worker, it will behave exactly like <code>cache.addAll()</code>. But let's say you then decide to add a 4th file to the <code>STATIC_FILES</code> array, this is where <code>cache.adderall(</code>⚡<code>)</code> shines. Where <code>cache.addAll()</code> would download every file again, <code>adderall.addAll()</code> only downloads the new file, and copies existing files from the old cache to the new (or just leaves them where they are, if both versions use the same cache).</p>
         <h3>Wait a second… what if my files changed?</h3>
-        <p><code>cache.adderall()</code>'s lazy approach is great for files that never change (e.g. <code>style.v38.css</code>, or<code>/js/2.6.0/annyang.min.js</code>). But if some of your files may change between versions, while their URL stays the same (e.g. <code>index.html</code>, <code>app-settings.json</code>), you can ask <code>cache.adderall()</code> to skip its lazy behavior for those files.</p>
-        <p>Any file that needs to be fetched from the network every time you update your service worker can be passed in a second array of URLs as <code>cache.adderall()</code>'s third argument.</p>
+        <p><code>cache.adderall(</code>⚡<code>)</code>'s lazy approach is great for files that never change (e.g. <code>style.v38.css</code>, or<code>/js/2.6.0/annyang.min.js</code>). But if some of your files may change between versions, while their URL stays the same (e.g. <code>index.html</code>, <code>app-settings.json</code>), you can ask <code>cache.adderall(</code>⚡<code>)</code> to skip its lazy behavior for those files.</p>
+        <p>Any file that needs to be fetched from the network every time you update your service worker can be passed in a second array of URLs as <code>cache.adderall(</code>⚡<code>)</code>'s third argument.</p>
         <pre><code class="javascript">// In your service worker
 importScripts('js/cache.adderall.js');
 
@@ -115,22 +115,22 @@ adderall.addAll(cache, undefined, ['/index.html', '/main.css']);
 </code></pre>
         <p>Remember: <code>adderall.addAll(cache, immutableURLs, mutableURLs);</code></p>
         <h3>What about HTTP caching?</h3>
-        <p>If your server is configured to serve each different file with the correct caching headers, serving mutable content with a <code>Cache-Control: no-cache</code> header, and immutable content with <code>Cache-Control: max-age=31536000</code>, then you might not need <code>cache.adderall()</code> at all. In fact, this is the prefered approach. You can read more details on <a href="https://jakearchibald.com/2016/caching-best-practices/">caching header best practices</a> in Jake Archibald's excellent post.</p>
-        <p>If however, you are in an environment where you can't control the caching headers of individual files, can't access the server, are not speaking with Dev Ops over a relatively minor hunting accident, or you are just using GitHub Pages - give <code>cache.adderall()</code> a try.</p>
+        <p>If your server is configured to serve each different file with the correct caching headers, serving mutable content with a <code>Cache-Control: no-cache</code> header, and immutable content with <code>Cache-Control: max-age=31536000</code>, then you might not need <code>cache.adderall(</code>⚡<code>)</code> at all. In fact, this is the prefered approach. You can read more details on <a href="https://jakearchibald.com/2016/caching-best-practices/">caching header best practices</a> in Jake Archibald's excellent post.</p>
+        <p>If however, you are in an environment where you can't control the caching headers of individual files, can't access the server, are not speaking with Dev Ops over a relatively minor hunting accident, or you are just using GitHub Pages - give <code>cache.adderall(</code>⚡<code>)</code> a try.</p>
         <p>Thanks <a href="https://twitter.com/jaffathecake">Jake Archibald</a> and <a href="https://twitter.com/jeffposnick">Jeffrey Posnick</a> for helping sort this out.</p>
       </div>
     </div>
   </div>
 
   <div class="container text-center narrower">
-    <p>cache.adderall() is a <strong>free</strong>, <strong>open source</strong>, community effort.</p>
+    <p>cache.adderall(</code>⚡<code>) is a <strong>free</strong>, <strong>open source</strong>, community effort.</p>
     <p>Please help spread the word:</p>
     <div class="row home-icons-row">
       <div class="col-sm-4 text-center">
         <iframe src="https://ghbtns.com/github-btn.html?user=TalAter&repo=cache.adderall&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
       </div>
       <div class="col-sm-4 text-center">
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://CacheAdderall.com" data-text="cache.adderall() ⚡ Speed up your #PWA with the impatient version of cache.addAll()" data-size="large" data-counturl="https://www.talater.com/adderall/">Tweet</a>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://CacheAdderall.com" data-text="cache.adderall(⚡) - Speed up your #PWA with the impatient version of cache.addAll()" data-size="large" data-counturl="https://www.talater.com/adderall/">Tweet</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       </div>
       <div class="col-sm-4 text-center">
@@ -158,7 +158,7 @@ adderall.addAll(cache, undefined, ['/index.html', '/main.css']);
       </ul>
     </div>
     <div class="row">
-      <p>&copy; 2016 Tal Ater. All rights reserved. The <a href="https://github.com/TalAter/cache.adderall">cache.adderall() source code</a> is free to use under the <a href="https://github.com/TalAter/cache.adderall/blob/master/LICENSE">MIT license</a>.</p>
+      <p>&copy; 2016 Tal Ater. All rights reserved. The <a href="https://github.com/TalAter/cache.adderall">cache.adderall(⚡) source code</a> is free to use under the <a href="https://github.com/TalAter/cache.adderall/blob/master/LICENSE">MIT license</a>.</p>
     </div>
   </div>
 
