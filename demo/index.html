@@ -78,7 +78,7 @@ var STATIC_FILES = [
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open('cache-v1').then(cache =>
-      cache.addAll(STATIC_FILES)
+         cache.addAll(STATIC_FILES)
     )
   );
 });</code></pre>
