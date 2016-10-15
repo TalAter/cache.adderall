@@ -116,7 +116,7 @@ adderall.addAll(cache, undefined, ['/index.html', '/main.css']);
         <p>Remember: <code>adderall.addAll(cache, immutableURLs, mutableURLs);</code></p>
         <h3>What about HTTP caching?</h3>
         <p>If your server is configured to serve each different file with the correct caching headers, serving mutable content with a <code>Cache-Control: no-cache</code> header, and immutable content with <code>Cache-Control: max-age=31536000</code>, then you might not need <code>cache.adderall(</code>⚡<code>)</code> at all. In fact, this is the prefered approach. You can read more details on <a href="https://jakearchibald.com/2016/caching-best-practices/">caching header best practices</a> in Jake Archibald's excellent post.</p>
-        <p>If however, you are in an environment where you can't control the caching headers of individual files, can't access the server, are not speaking with Dev Ops over a relatively minor hunting accident, or you are just using GitHub Pages - give <code>cache.adderall(</code>⚡<code>)</code> a try.</p>
+        <p>If however you are in an environment where you can't control the caching headers of individual files, can't access the server, are not speaking with Dev Ops over a relatively minor accident involving yogurt, or you are just using GitHub Pages - give <code>cache.adderall(</code>⚡<code>)</code> a try.</p>
         <p>Thanks <a href="https://twitter.com/jaffathecake">Jake Archibald</a> and <a href="https://twitter.com/jeffposnick">Jeffrey Posnick</a> for helping sort this out.</p>
       </div>
     </div>
