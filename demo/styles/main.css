@@ -25,10 +25,10 @@ header {
   text-align: center;
   padding-top: 50px;
   background: #353c4b;
-  background: -moz-radial-gradient(center, ellipse cover, #353c4b 0%, #1b212f 100%);
-  background: -webkit-radial-gradient(center, ellipse cover, #353c4b 0%,#1b212f 100%);
-  background: radial-gradient(ellipse at center, #353c4b 0%,#1b212f 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353c4b', endColorstr='#1b212f',GradientType=1 );
+  background: -moz-radial-gradient(center, ellipse cover, #34405b 0%, #1b212f 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, #34405b 0%,#1b212f 100%);
+  background: radial-gradient(ellipse at center, #34405b 0%,#1b212f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34405b', endColorstr='#1b212f',GradientType=1 );
   background-position: -300px -800px;
   background-size: 120% 100%;
   border-bottom: 16px solid #00baf8;
