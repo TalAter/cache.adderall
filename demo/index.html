@@ -48,10 +48,10 @@
         <p><code>cache.adderall(</code>⚡<code>)</code> is very much like the browser's native <code>cache.addAll()</code>. The only difference is that when you call it, <code>cache.adderall(</code>⚡<code>)</code> first looks for the files you are trying to cache in the user's existing caches. If any of these files are found, they will be copied over to the new cache, so that your service worker only needs to download new files. Any file that isn't already cached will be fetched as usual using the native <code>cache.addAll()</code>.</p>
         <p>This saves bandwidth, speeds up your service worker installation, and saves your users from downloading the same files over and over again, every time your service worker changes.</p>
         <h3>Using <code>cache.adderall(</code>⚡<code>)</code></h3>
-        <p>Once you've <a href="https://github.com/TalAter/cache.adderall/tree/master/dist">imported <code>cache.adderall(</code>⚡<code>)</code></a> into your service worker, calling <code>cache.adderall(</code>⚡<code>)</code> is very much like calling <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object followed by the array of URLs.</p>
+        <p>Once you've imported <code>cache.adderall(</code>⚡<code>)</code> into your service worker, calling <code>cache.adderall(</code>⚡<code>)</code> is very much like calling <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object followed by the array of URLs.</p>
         <div id="code-basic">
 <pre id="code-basic-adderall"><code class="javascript">// In your service worker
-importScripts('js/cache.adderall.js');
+importScripts('https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js');
 
 var STATIC_FILES = [
   'video/cache.adderall.demo.mp4',
@@ -88,7 +88,7 @@ self.addEventListener('install', event => {
         <p><code>cache.adderall(</code>⚡<code>)</code>'s lazy approach is great for files that never change (e.g. <code>style.v38.css</code>, or<code>/js/2.6.0/annyang.min.js</code>). But if some of your files may change between versions, while their URL stays the same (e.g. <code>index.html</code>, <code>app-settings.json</code>), you can ask <code>cache.adderall(</code>⚡<code>)</code> to skip its lazy behavior for those files.</p>
         <p>Any file that needs to be fetched from the network every time you update your service worker can be passed in a second array of URLs as <code>cache.adderall(</code>⚡<code>)</code>'s third argument.</p>
         <pre><code class="javascript">// In your service worker
-importScripts('js/cache.adderall.js');
+importScripts('https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js');
 
 var STATIC_FILES = [
   'video/cache.adderall.demo.mp4',
