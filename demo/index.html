@@ -50,34 +50,34 @@
         <h3>Using <code>cache.adderall(</code>⚡<code>)</code></h3>
         <p>Once you've imported <code>cache.adderall(</code>⚡<code>)</code> into your service worker, calling <code>cache.adderall(</code>⚡<code>)</code> is very much like calling <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object followed by the array of URLs.</p>
         <div id="code-basic">
-<pre id="code-basic-adderall"><code class="javascript">// In your service worker
-importScripts('https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js');
+<pre id="code-basic-adderall"><code class="javascript hljs"><span class="hljs-comment">// In your service worker</span>
+importScripts(<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js'</span>);
 
-var STATIC_FILES = [
-  'video/cache.adderall.demo.mp4',
-  '/bootstrap/3.3.7/css/bootstrap.min.css',
-  '/js/2.6.0/annyang.min.js'
+<span class="hljs-keyword">var</span> STATIC_FILES = [
+  <span class="hljs-string">'video/cache.adderall.demo.mp4'</span>,
+  <span class="hljs-string">'/bootstrap/3.3.7/css/bootstrap.min.css'</span>,
+  <span class="hljs-string">'/js/2.6.0/annyang.min.js'</span>
 ];
 
-self.addEventListener('install', event => {
+self.addEventListener(<span class="hljs-string">'install'</span>, event =&gt; {
   event.waitUntil(
-    caches.open('cache-v1').then(cache =>
+    caches.open(<span class="hljs-string">'cache-v1'</span>).then(<span class="hljs-function"><span class="hljs-params">cache</span> =&gt;</span>
       adderall.addAll(cache, STATIC_FILES)
     )
   );
 });</code></pre>
-<pre id="code-basic-addall"><code class="javascript">// In your service worker
+<pre id="code-basic-addall"><code class="javascript hljs"><span class="hljs-comment">// In your service worker</span>
+  <span class="invisible">importScripts(<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js'</span>);</span>
 
-
-var STATIC_FILES = [
-  'video/cache.adderall.demo.mp4',
-  '/bootstrap/3.3.7/css/bootstrap.min.css',
-  '/js/2.6.0/annyang.min.js'
+<span class="hljs-keyword">var</span> STATIC_FILES = [
+  <span class="hljs-string">'video/cache.adderall.demo.mp4'</span>,
+  <span class="hljs-string">'/bootstrap/3.3.7/css/bootstrap.min.css'</span>,
+  <span class="hljs-string">'/js/2.6.0/annyang.min.js'</span>
 ];
 
-self.addEventListener('install', event => {
+self.addEventListener(<span class="hljs-string">'install'</span>, event =&gt; {
   event.waitUntil(
-    caches.open('cache-v1').then(cache =>
+    caches.open(<span class="hljs-string">'cache-v1'</span>).then(<span class="hljs-function"><span class="hljs-params">cache</span> =&gt;</span>
          cache.addAll(STATIC_FILES)
     )
   );
@@ -87,31 +87,31 @@ self.addEventListener('install', event => {
         <h3>Wait a second… what if my files changed?</h3>
         <p><code>cache.adderall(</code>⚡<code>)</code>'s lazy approach is great for files that never change (e.g. <code>style.v38.css</code>, or<code>/js/2.6.0/annyang.min.js</code>). But if some of your files may change between versions, while their URL stays the same (e.g. <code>index.html</code>, <code>app-settings.json</code>), you can ask <code>cache.adderall(</code>⚡<code>)</code> to skip its lazy behavior for those files.</p>
         <p>Any file that needs to be fetched from the network every time you update your service worker can be passed in a second array of URLs as <code>cache.adderall(</code>⚡<code>)</code>'s third argument.</p>
-        <pre><code class="javascript">// In your service worker
-importScripts('https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js');
+        <pre><code class="javascript hljs"><span class="hljs-comment">// In your service worker</span>
+importScripts(<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js'</span>);
 
-var STATIC_FILES = [
-  'video/cache.adderall.demo.mp4',
-  '/bootstrap/3.3.7/css/bootstrap.min.css',
-  '/js/2.6.0/annyang.min.js'
+<span class="hljs-keyword">var</span> STATIC_FILES = [
+  <span class="hljs-string">'video/cache.adderall.demo.mp4'</span>,
+  <span class="hljs-string">'/bootstrap/3.3.7/css/bootstrap.min.css'</span>,
+  <span class="hljs-string">'/js/2.6.0/annyang.min.js'</span>
 ];
 
-var MUTABLE_FILES = [
-  'app-settings.json',
-  'index.html'
+<span class="hljs-keyword">var</span> MUTABLE_FILES = [
+  <span class="hljs-string">'app-settings.json'</span>,
+  <span class="hljs-string">'index.html'</span>
 ];
 
-self.addEventListener('install', event => {
+self.addEventListener(<span class="hljs-string">'install'</span>, event =&gt; {
   event.waitUntil(
-    caches.open('cache-v2').then(cache =>
+    caches.open(<span class="hljs-string">'cache-v2'</span>).then(<span class="hljs-function"><span class="hljs-params">cache</span> =&gt;</span>
       adderall.addAll(cache, STATIC_FILES, MUTABLE_FILES)
     )
   );
 });</code></pre>
         <p>Any URLs passed in the 3rd argument, are handled directly by the native <code>cache.addAll()</code>.</p>
         <p>In fact, the following two commands do exactly the same thing:</p>
-        <pre><code class="javascript">cache.addAll(['/index.html', '/main.css']);
-adderall.addAll(cache, undefined, ['/index.html', '/main.css']);
+        <pre><code class="javascript hljs">cache.addAll([<span class="hljs-string">'/index.html'</span>, <span class="hljs-string">'/main.css'</span>]);
+adderall.addAll(cache, <span class="hljs-literal">undefined</span>, [<span class="hljs-string">'/index.html'</span>, <span class="hljs-string">'/main.css'</span>]);
 </code></pre>
         <p>Remember: <code>adderall.addAll(cache, immutableURLs, mutableURLs);</code></p>
         <h3>What about HTTP caching?</h3>
@@ -170,7 +170,5 @@ adderall.addAll(cache, undefined, ['/index.html', '/main.css']);
 <!-- Unrelated sugar to make the page look nice -->
 <script src="js/main.js"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atelier-heath-light.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
