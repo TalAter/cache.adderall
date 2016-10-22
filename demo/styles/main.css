@@ -139,6 +139,10 @@ code {
     95% {opacity: 0.0;}
     100% {opacity: 1.0;}
 }
+.home-icons-row {
+  margin-bottom: 30px;
+}
+
 .footer {
   margin-bottom: 30px;
 }
