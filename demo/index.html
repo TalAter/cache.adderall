@@ -44,11 +44,11 @@
     <div class="row">
       <div class="col-md-12">
         <h3>What does <code>cache.adderall(</code>⚡<code>)</code> do?</h3>
-        <p>When we install a new service worker, it is common practice to use <code>cache.addAll()</code> to cache all the URLs our web app needs. Then, when we make any change to the service worker, or change the list of files it needs to cache, the install event runs again and fetches every single file again… This can be terribly inefficient and wasteful.</p>
+        <p>When your site installs a new service worker, you are probably using <code>cache.addAll()</code> to cache all the URLs your site needs. Then, every time you make any change to the service worker, or change the list of files to cache, the install event runs again and fetches every single file again… This can be terribly inefficient and wasteful.</p>
         <p><code>cache.adderall(</code>⚡<code>)</code> is very much like the browser's native <code>cache.addAll()</code>. The only difference is that when you call it, <code>cache.adderall(</code>⚡<code>)</code> first looks for the files you are trying to cache in the user's existing caches. If any of these files are found, they will be copied over to the new cache, so that your service worker only needs to download new files. Any file that isn't already cached will be fetched as usual using the native <code>cache.addAll()</code>.</p>
         <p>This saves bandwidth, speeds up your service worker installation, and saves your users from downloading the same files over and over again, every time your service worker changes.</p>
         <h3>Using <code>cache.adderall(</code>⚡<code>)</code></h3>
-        <p>Once you've imported <code>cache.adderall(</code>⚡<code>)</code> into your service worker, calling <code>cache.adderall(</code>⚡<code>)</code> is very much like calling <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object followed by the array of URLs.</p>
+        <p>Once you've imported <code>cache.adderall(</code>⚡<code>)</code> into your service worker, calling it is very much like calling <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object followed by the array of URLs.</p>
         <div id="code-basic">
 <pre id="code-basic-adderall"><code class="javascript hljs"><span class="hljs-comment">// In your service worker</span>
 importScripts(<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js'</span>);
