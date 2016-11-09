@@ -13,6 +13,29 @@ When your site installs a new service worker, you are probably using `cache.addA
 
 This saves bandwidth, speeds up your service worker installation, and saves your users from downloading the same files over and over again, every time your service worker changes.
 
+### How do I use it
+
+Simple, just include the script in your service worker, and replace calls to `cache.addAll()` with `adderall.addAll()`.
+
+````javascript
+// In your service worker
+importScripts('https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js');
+
+var STATIC_FILES = [
+  'video/cache.adderall.demo.mp4',
+  '/bootstrap/3.3.7/css/bootstrap.min.css',
+  '/js/2.6.0/annyang.min.js'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open('cache-v1').then(cache =>
+      adderall.addAll(cache, STATIC_FILES)
+    )
+  );
+});
+````
+
 ### What about...
 
 If you are going to keep asking questions, you might as well just visit the [cache.adderall(⚡) homepage](https://www.talater.com/adderall/).
