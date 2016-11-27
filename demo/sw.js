@@ -30,7 +30,7 @@ self.addEventListener('install', event => {
       // We replace this:
       // cache.addAll(IMMUTABLE_AND MUTABLE_FILES);
       // with this:
-      adderall.addAll(cache, IMMUTABLE_FILES, MUTABLE_FILES);
+      adderall.addAll(cache, IMMUTABLE_FILES, MUTABLE_FILES)
     )
   );
 });
