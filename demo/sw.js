@@ -11,9 +11,9 @@ var IMMUTABLE_FILES = [
   'img/cache.adderall_demo.png',
   'img/building-progressive-web-apps-book.png',
   'img/bg_texturing.png',
-  // 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
-  // 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atelier-heath-light.min.css',
-  // 'https://fonts.googleapis.com/css?family=Lato:300,700,900'
+  'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+  'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atelier-heath-light.min.css',
+  'https://fonts.googleapis.com/css?family=Lato:300,700,900'
 ];
 
 // Files that might change from version to version.
