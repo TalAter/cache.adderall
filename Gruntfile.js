@@ -3,30 +3,27 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-    jshint: {
+    pkg: grunt.file.readJSON("package.json"),
+    eslint: {
       all: [
-        'src/cache.adderall.js',
-        'Gruntfile.js'
-      ],
-      options: {
-        jshintrc: true
-      }
+        "src/cache.adderall.js",
+        "Gruntfile.js"
+      ]
     },
     browserify: {
       standalone: {
-        src: [ 'src/cache.adderall.js' ],
-        dest: 'dist/cache.adderall.js',
+        src: [ "src/cache.adderall.js" ],
+        dest: "dist/cache.adderall.js",
         options: {
           transform: [
             [ "babelify", {presets: ["es2015"]} ]
           ],
           plugin: [
-            [ "minifyify", { output: "dist/cache.adderall.js.map", map: 'cache.adderall.js.map' } ],
+            [ "minifyify", { output: "dist/cache.adderall.js.map", map: "cache.adderall.js.map" } ],
             [ "browserify-header" ]
           ],
           browserifyOptions: {
-            standalone: 'adderall',
+            standalone: "adderall",
             debug: true
           }
         }
@@ -35,37 +32,37 @@ module.exports = function(grunt) {
     markdox: {
       target: {
         files: [
-          {src: 'src/cache.adderall.js', dest: 'docs/README.md'}
+          {src: "src/cache.adderall.js", dest: "docs/README.md"}
         ]
       }
     },
     watch: {
-      files: ['src/cache.adderall.js', '!**/node_modules/**'],
-      tasks: ['default']
+      files: ["src/cache.adderall.js", "!**/node_modules/**"],
+      tasks: ["default"]
     },
     connect: {
       devel: {
         options: {
-          protocol: 'http',
+          protocol: "http",
           port: 1919,
-          hostname: '*',
-          base: '.',
-          open: 'http://localhost:1919/demo'
+          hostname: "*",
+          base: ".",
+          open: "http://localhost:1919/demo"
         }
       }
     }
   });
 
   // Load NPM Tasks
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-markdox');
+  grunt.loadNpmTasks("grunt-eslint");
+  grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-browserify");
+  grunt.loadNpmTasks("grunt-contrib-connect");
+  grunt.loadNpmTasks("grunt-markdox");
 
   // Register tasks.
-  grunt.registerTask('default', ['jshint', 'browserify', 'markdox']);
-  grunt.registerTask('test', ['jshint']);
-  grunt.registerTask('serve', ['default', 'connect:devel', 'watch']);
+  grunt.registerTask("default", ["eslint", "browserify", "markdox"]);
+  grunt.registerTask("test", ["eslint"]);
+  grunt.registerTask("serve", ["default", "connect:devel", "watch"]);
 
 };
