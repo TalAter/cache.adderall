@@ -47,13 +47,13 @@
  * @return {Promise} A promise that resolves to void
  * @method addAll
  */
-var addAll = function(cache, immutableRequests = [], mutableRequests = []) {
+const addAll = function(cache, immutableRequests = [], mutableRequests = []) {
   // Verify arguments
   if (!(cache instanceof Cache) || !Array.isArray(immutableRequests) || !Array.isArray(mutableRequests)) {
     return Promise.reject();
   }
 
-  var newImmutableRequests = [];
+  let newImmutableRequests = [];
 
   // Go over immutable requests
   return Promise.all(
