@@ -29,7 +29,7 @@ self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache =>
       // We replace this:
-      // cache.addAll(IMMUTABLE_AND MUTABLE_FILES);
+      // cache.addAll(IMMUTABLE_AND_MUTABLE_FILES);
       // with this:
       adderall.addAll(cache, IMMUTABLE_FILES, MUTABLE_FILES)
     )
