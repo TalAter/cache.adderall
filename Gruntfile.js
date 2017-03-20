@@ -7,7 +7,8 @@ module.exports = function(grunt) {
     eslint: {
       all: [
         "src/cache.adderall.js",
-        "Gruntfile.js"
+        "Gruntfile.js",
+        "demo/sw.js"
       ]
     },
     browserify: {
