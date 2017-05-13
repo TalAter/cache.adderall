@@ -1,4 +1,6 @@
 # cache.adderall(⚡)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/TalAter/cache.adderall.svg)](https://greenkeeper.io/)
 > the impatient version of cache.addAll() 
 
 cache.adderall(⚡) speeds up your service worker installations, and saves bandwidth for you and your users.
