@@ -51,7 +51,7 @@
         <p>Once you've imported <code>cache.adderall(</code>⚡<code>)</code> into your service worker, calling it is very much like calling <code>cache.addAll()</code>. The only difference is that instead of calling <code>addAll()</code> on a cache object and passing it an array of URLs, you call <code>adderall.addAll()</code> passing it the cache object followed by the array of URLs.</p>
         <div id="code-basic">
 <pre id="code-basic-adderall"><code class="javascript hljs"><span class="hljs-comment">// In your service worker</span>
-importScripts(<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js'</span>);
+importScripts(<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/1.0.0/cache.adderall.js'</span>);
 
 <span class="hljs-keyword">var</span> STATIC_FILES = [
   <span class="hljs-string">'video/cache.adderall.demo.mp4'</span>,
@@ -67,7 +67,7 @@ self.addEventListener(<span class="hljs-string">'install'</span>, event =&gt; {
   );
 });</code></pre>
 <pre id="code-basic-addall"><code class="javascript hljs"><span class="hljs-comment">// In your service worker</span>
-  <span class="invisible">importScripts(<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js'</span>);</span>
+  <span class="invisible">importScripts(<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/1.0.0/cache.adderall.js'</span>);</span>
 
 <span class="hljs-keyword">var</span> STATIC_FILES = [
   <span class="hljs-string">'video/cache.adderall.demo.mp4'</span>,
@@ -88,7 +88,7 @@ self.addEventListener(<span class="hljs-string">'install'</span>, event =&gt; {
         <p><code>cache.adderall(</code>⚡<code>)</code>'s lazy approach is great for files that never change (e.g. <code>style.v38.css</code>, or<code>/js/2.6.0/annyang.min.js</code>). But if some of your files may change between versions, while their URL stays the same (e.g. <code>index.html</code>, <code>app-settings.json</code>), you can ask <code>cache.adderall(</code>⚡<code>)</code> to skip its lazy behavior for those files.</p>
         <p>Any file that needs to be fetched from the network every time you update your service worker can be passed in a second array of URLs as <code>cache.adderall(</code>⚡<code>)</code>'s third argument.</p>
         <pre><code class="javascript hljs"><span class="hljs-comment">// In your service worker</span>
-importScripts(<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js'</span>);
+importScripts(<span class="hljs-string">'https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/1.0.0/cache.adderall.js'</span>);
 
 <span class="hljs-keyword">var</span> STATIC_FILES = [
   <span class="hljs-string">'video/cache.adderall.demo.mp4'</span>,

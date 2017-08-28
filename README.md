@@ -1,5 +1,5 @@
 # cache.adderall(⚡)
-> the impatient version of cache.addAll() 
+> the impatient version of cache.addAll()
 
 cache.adderall(⚡) speeds up your service worker installations, and saves bandwidth for you and your users.
 
@@ -19,7 +19,7 @@ Simple, just include the script in your service worker, and replace calls to `ca
 
 ````javascript
 // In your service worker
-importScripts('https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/0.1.0/cache.adderall.js');
+importScripts('https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/1.0.0/cache.adderall.js');
 
 var STATIC_FILES = [
   'video/cache.adderall.demo.mp4',
